@@ -46,6 +46,7 @@ public class Main {
 		System.out.println("Instructions:" + recipe.getInstructions());
 
 		//add the recipe to list of recipes using recipeManager
-		RecipeManager addRecipe = new RecipeManager.addRecipe(Recipe recipe);
+		RecipeManager addRecipeObj = new RecipeManager();
+			addRecipeObj.addRecipe(recipe);
 }
 }
