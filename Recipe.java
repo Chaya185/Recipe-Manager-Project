@@ -16,6 +16,7 @@ public class Recipe {
     }
     //empty constructor 
     public Recipe() {
+    }
     	
     //setters
     public void setName(String name){
