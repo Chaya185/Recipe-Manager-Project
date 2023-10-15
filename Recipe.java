@@ -2,6 +2,8 @@ package MethodologyProject;
 
 import java.util.List;
 
+
+//this class is used to create recipe objects. It holds the recipe name, list of ingredients, and list of instructions
 public class Recipe {
     private String name;
     private List<String> ingredients;
