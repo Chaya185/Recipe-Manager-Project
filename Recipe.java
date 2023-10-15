@@ -14,7 +14,9 @@ public class Recipe {
         this.ingredients = ingredients;
         this.instructions = instructions;
     }
-
+    //empty constructor 
+    public Recipe() {
+    	
     //setters
     public void setName(String name){
         this.name = name;
@@ -40,4 +42,15 @@ public class Recipe {
     public List<String> getInstructions(){
         return instructions;
     }
+    
+    //toString
+    @Override
+    public  String toString() {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("\nHere is the recipe for the information you provided: " );
+    	sb.append("\nName of recipe: " + getName());
+    	sb.append("\nIngredients: " + getIngredients());
+    	sb.append("\nInstructions: " + getInstructions());;
+    	return sb.toString();
+    	}
 }
