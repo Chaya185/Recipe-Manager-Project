@@ -1,3 +1,4 @@
+
 package MethodologyProject;
 
 import java.util.ArrayList;
@@ -39,14 +40,11 @@ public class Main {
 		Recipe recipe = new Recipe( name, ingredientsList, instructionsList);
 			
 		System.out.println();
-		//display the information
-		System.out.println("Here is the recipe for the information you provided.");
-		System.out.println("Name of recipe:" + recipe.getName());
-		System.out.println("Ingredients:" + recipe.getIngredients());
-		System.out.println("Instructions:" + recipe.getInstructions());
-
+		System.out.println(recipe.toString());
+		
 		//add the recipe to list of recipes using recipeManager
 		RecipeManager addRecipeObj = new RecipeManager();
 			addRecipeObj.addRecipe(recipe);
+	
 }
 }
