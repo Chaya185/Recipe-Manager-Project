@@ -2,7 +2,6 @@ package MethodologyProject;
 
 import java.util.List;
 
-
 //this class is used to create recipe objects. It holds the recipe name, list of ingredients, and list of instructions
 public class Recipe {
     private String name;
@@ -17,10 +16,17 @@ public class Recipe {
     }
 
     //setters
-    public void setName(){
-
+    public void setName(String name){
+        this.name = name;
     }
 
+    public void setIngredients(List<String> ingredients){
+        this.ingredients = ingredients;
+    }
+
+    public void setInstructions(List<String> instructions){
+        this.instructions = instructions;
+    }
 
     //getters
     public String getName(){
