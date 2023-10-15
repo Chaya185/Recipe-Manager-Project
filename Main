@@ -35,15 +35,17 @@ public class Main {
 	        }
 			
 			
-			//create the object and pass to constructor
-			Recipe recipe = new Recipe( name, ingredientsList, instructionsList);
+		//create the object and pass to constructor
+		Recipe recipe = new Recipe( name, ingredientsList, instructionsList);
 			
-			System.out.println();
-			//display the information
-			System.out.println("Here is the recipe for the information you provided.");
-			System.out.println("Name of recipe:" + recipe.getName());
-			System.out.println("Ingredients:" + recipe.getIngredients());
-			System.out.println("Instructions:" + recipe.getInstructions());
+		System.out.println();
+		//display the information
+		System.out.println("Here is the recipe for the information you provided.");
+		System.out.println("Name of recipe:" + recipe.getName());
+		System.out.println("Ingredients:" + recipe.getIngredients());
+		System.out.println("Instructions:" + recipe.getInstructions());
 
+		//add the recipe to list of recipes using recipeManager
+		RecipeManager addRecipe = new RecipeManager.addRecipe(Recipe recipe);
 }
 }
