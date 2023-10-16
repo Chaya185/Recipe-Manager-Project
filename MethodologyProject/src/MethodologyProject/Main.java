@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-	//RZ testing
 	public static void main(String[] args) {
 		String name;
 		int number;
