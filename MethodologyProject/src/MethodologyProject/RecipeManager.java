@@ -3,7 +3,7 @@ package MethodologyProject;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//testing
 //this class deals with the list of all recipes, including adding and removing recipes
 public class RecipeManager {
     private List<Recipe> recipes = new ArrayList<>();
