@@ -12,7 +12,7 @@ public class Main {
 		Scanner keyboard = new Scanner(System.in);
 		  System.out.println("Please enter the name of the recipe: ");
 			name=keyboard.nextLine();
-			
+			//ingredients
 			System.out.println("How many ingredients does this recipe require?");
 			number=keyboard.nextInt();
 			 List<String> ingredientsList = new ArrayList<>();
