@@ -35,7 +35,6 @@ public class Main {
 	            instructionsList.add(keyboard.nextLine());
 	        }
 
-			//TEST COMMENT BY CHAYKI KANEVSKI
 		//create the object and pass to constructor
 		Recipe recipe = new Recipe( name, ingredientsList, instructionsList);
 			
