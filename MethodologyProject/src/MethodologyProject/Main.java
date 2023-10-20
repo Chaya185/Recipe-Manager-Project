@@ -9,25 +9,19 @@ public class Main {
 	public static void main(String[] args) {
 		//hardcode Recipe objects
 		// Create an Array with the ingredients
-		/*String[] recipe1 = {"2 large eggs",
+		String[] recipeList1 = {"2 large eggs",
 				"Salt and pepper to taste",
 				"1/4 cup diced bell peppers",
 				"1/4 cup diced onions",
 				"1/4 cup diced tomatoes",
 				"1/4 cup shredded cheese (e.g., cheddar or mozzarella)",
 				"Cooking oil or butter for the pan"};
-		StringArrayList stringArrayList1 = new StringArrayList(recipe1); */
 
-		ArrayList<String> ingredients = new ArrayList<>();
-		ingredients.add("2 large eggs");
-		ingredients.add("Salt and pepper to taste");
-		ingredients.add("1/4 cup diced bell peppers");
-		ingredients.add("1/4 cup diced onions");
-		ingredients.add("1/4 cup diced tomatoes");
-		ingredients.add("1/4 cup shredded cheese (e.g., cheddar or mozzarella)");
-		ingredients.add("Cooking oil or butter for the pan");
+		//call the method to turn the array of ingedients into an arrayList.
+		ArrayList ingredients1 = StringArrayList(recipeList1);
 
-		Recipe recipe1 = new Recipe("Vegetable Omelet", ingredients, ("1. In a bowl, whisk the eggs and season with salt and pepper.\n" +
+		//create new recipe object passing in the recipe name, arrayList of ingredients and String of instructions
+		Recipe recipe1 = new Recipe("Vegetable Omelet", ingredients1, ("1. In a bowl, whisk the eggs and season with salt and pepper.\n" +
 				"2. Heat a non-stick skillet over medium heat and add a little oil or butter.\n" +
 				"3. Add the diced vegetables and sauté until they are tender.\n" +
 				"4. Pour the whisked eggs over the vegetables and cook, swirling the pan to spread the eggs evenly.\n" +
@@ -51,11 +45,10 @@ public class Main {
 	        	System.out.println("Enter ingredient " + i + ":");
 	        	ingredientsList.add(keyboard.next());
 	        }
-	        
-	        System.out.println("How many instructions does the recipe require?");
-	        number = keyboard.nextInt();
-	        
-	        //for loop to get the instructions and add to list
+			//consume buffer
+			keyboard.nextLine();
+
+	        System.out.println("Enter the recipe instructions: ");
 		    String instructions = keyboard.nextLine();
 
 
@@ -70,4 +63,16 @@ public class Main {
 			addRecipeObj.addRecipe(recipe);
 	
 }
+
+		//this method accepts an array of strings, coverts it to an arrayList and return the arrayList
+		//method is used to create hardcoded recipes
+		public static ArrayList StringArrayList(String[] stringArray) {
+			ArrayList<String> stringList;
+			stringList = new ArrayList<>();
+			for (String str : stringArray) {
+				stringList.add(str);
+			}
+			return stringList;
+		}
+
 }
