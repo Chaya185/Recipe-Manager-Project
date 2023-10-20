@@ -64,15 +64,15 @@ public class Main {
 	
 }
 
-		//this method accepts an array of strings, coverts it to an arrayList and return the arrayList
-		//method is used to create hardcoded recipes
-		public static ArrayList StringArrayList(String[] stringArray) {
-			ArrayList<String> stringList;
-			stringList = new ArrayList<>();
-			for (String str : stringArray) {
-				stringList.add(str);
-			}
-			return stringList;
+	//this method accepts an array of strings, coverts it to an arrayList and return the arrayList
+	//method is used to create hardcoded recipes
+	public static ArrayList StringArrayList(String[] stringArray) {
+		ArrayList<String> stringList;
+		stringList = new ArrayList<>();
+		for (String str : stringArray) {
+			stringList.add(str);
 		}
+		return stringList;
+	}
 
 }
