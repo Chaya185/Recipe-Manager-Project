@@ -3,7 +3,7 @@ package MethodologyProject;
 import java.util.ArrayList;
 
 //this class takes the reciped and places them into objects
-public class RecipeObject {
+public class RecipeObjects {
 
     public static void createRecipeList() {
         //hardcode Recipe objects
