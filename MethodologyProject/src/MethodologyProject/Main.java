@@ -52,6 +52,26 @@ public class Main {
 				"5. When the edges start to set, sprinkle the shredded cheese on one half of the omelet.\n" +
 				"6. Gently fold the other half of the omelet over the cheese and cook for a minute or two until the cheese melts.\n" +
 				"\n"));
+		String[] recipeList2 = {"1 box of pasta",
+				"Salt to taste",
+				"1/4 cup mozzarella cheese",
+				"1/4 cup marinera sauce",
+				"1 tsp butter",
+				"2 tbs milk ",
+				"1/2 tsp red pepper flakes",
+				"1/2 tsp basil"};
+
+		//call the method to turn the array of ingredients into an arrayList.
+		ArrayList ingredients2 = StringArrayList(recipeList2);
+
+		//create new recipe object passing in the recipe name, arrayList of ingredients and String of instructions
+		Recipe recipe2 = new Recipe("Mac and cheese", ingredients2, ("1. Boil a pot of water.\n" +
+				"2. Add some salt and once boiled, add your pasta.\n" +
+				"3. Cook pasta for about 11 minutes on medium flame.\n" +
+				"4. Once cooked, drain your pasta and pour cold water over it.\n" +
+				"5. Now add your marinera sauce, cheese, butter, milk, red pepper flakes, basil and salt.\n" +
+				"6. Mix until the cheese melts.\n" +
+				"\n"));	
 
 //need to add code that will find certain recipes in the array list and print them 
 		
