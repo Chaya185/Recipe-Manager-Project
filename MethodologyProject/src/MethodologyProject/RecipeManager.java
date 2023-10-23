@@ -17,5 +17,8 @@ public class RecipeManager {
     }
 
     // Add methods for searching, editing, and deleting recipes
+    public void deleteRecipe(Recipe recipe){
+        recipes.remove(recipe);
+    }
 
 }
