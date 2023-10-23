@@ -7,30 +7,11 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+		createRecipeList();
 		menu();
-	}//closes main method 
-	
-	public static void menu () {
-		Scanner keyboard = new Scanner(System.in);
-		
-		System.out.println("Please enter your choice below: ");
-		System.out.println("1. find recipes \n2. submit recipes  ");
-		int choice = keyboard.nextInt();
-		
-		if (choice ==1) {
-			findRecipes(keyboard);
-		}
-		else if (choice ==2) {
-			submitRecipes(keyboard);
-		}
-		else {
-			System.out.println("\nERROR! INVALID CHOICE.");
-			menu();
-		}
-	}//closes menu 
-		
-		
-		public static void findRecipes(Scanner keyboard) {
+	}//closes main method
+
+	public static void createRecipeList(){
 		//hardcode Recipe objects
 		// Create an Array with the ingredients
 		String[] recipeList1 = {"2 large eggs",
@@ -71,7 +52,30 @@ public class Main {
 				"4. Once cooked, drain your pasta and pour cold water over it.\n" +
 				"5. Now add your marinera sauce, cheese, butter, milk, red pepper flakes, basil and salt.\n" +
 				"6. Mix until the cheese melts.\n" +
-				"\n"));	
+				"\n"));
+	}
+	
+	public static void menu () {
+		Scanner keyboard = new Scanner(System.in);
+		
+		System.out.println("Please enter your choice below: ");
+		System.out.println("1. find recipes \n2. submit recipes  ");
+		int choice = keyboard.nextInt();
+		
+		if (choice ==1) {
+			findRecipes(keyboard);
+		}
+		else if (choice ==2) {
+			submitRecipes(keyboard);
+		}
+		else {
+			System.out.println("\nERROR! INVALID CHOICE.");
+			menu();
+		}
+	}//closes menu 
+		
+		
+		public static void findRecipes(Scanner keyboard) {
 
 //need to add code that will find certain recipes in the array list and print them 
 		
