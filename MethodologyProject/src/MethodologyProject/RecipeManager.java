@@ -21,7 +21,7 @@ public class RecipeManager {
         recipes.remove(recipe);
     }
 
-    //method to retrieve recipe based on the name of the recipe passed in
+    //method to retrieve recipe based on the name of the recipe passed in. It searches the array for requested recipe
     public Recipe getRecipeByName(String recipeName) {
         for (Recipe recipe : recipes) {
             if (recipe.getName().equalsIgnoreCase(recipeName)) {
