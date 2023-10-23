@@ -13,6 +13,7 @@ public class Main {
 		//do while loop to display menu so long as user wants to repeat menu options
 		String repeat;
 		do {
+//ADD CODE TO display list of recipes
 			menu(keyboard);
 			System.out.println("Would you like to find another recipe or submit a recipe?  ('yes/no') ");
 			repeat = keyboard.nextLine();
@@ -34,7 +35,7 @@ public class Main {
 		ArrayList ingredients1 = StringArrayList(recipeList1);
 
 		//create new recipe object passing in the recipe name, arrayList of ingredients and String of instructions
-		Recipe recipe1 = new Recipe("Vegetable Omelet", ingredients1, ("1. In a bowl, whisk the eggs and season with salt and pepper.\n" +
+		Recipe Omelet = new Recipe("Vegetable Omelet", ingredients1, ("1. In a bowl, whisk the eggs and season with salt and pepper.\n" +
 				"2. Heat a non-stick skillet over medium heat and add a little oil or butter.\n" +
 				"3. Add the diced vegetables and sauté until they are tender.\n" +
 				"4. Pour the whisked eggs over the vegetables and cook, swirling the pan to spread the eggs evenly.\n" +
