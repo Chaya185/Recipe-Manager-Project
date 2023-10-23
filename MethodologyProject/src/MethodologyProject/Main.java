@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		createRecipeList(); //call method to add all hardcoded recipes to an arraylist
+		//createRecipeList(); //call method to add all hardcoded recipes to an arraylist
 		Scanner keyboard = new Scanner(System.in);
 
 		//do while loop to display menu so long as user wants to repeat menu options
@@ -19,7 +19,7 @@ public class Main {
 			repeat = keyboard.nextLine();
 		} while (repeat.equalsIgnoreCase("yes"));
 	}//closes main method
-
+/*
 	public static void createRecipeList(){
 		//hardcode Recipe objects
 		// Create an Array with the ingredients
@@ -63,7 +63,7 @@ public class Main {
 				"6. Mix until the cheese melts.\n" +
 				"\n"));
 	}
-	
+	*/
 	public static void menu(Scanner keyboard) {
 
 		System.out.println("Please enter your choice below: ('1' or '2') \n1. find recipes \n2. submit recipes  ");
@@ -134,7 +134,7 @@ public class Main {
 			
 		}//closes submitRecipes method 
 
-
+/*
 	//this method accepts an array of strings, converts it to an arrayList and return the arrayList if prompted AKA what the find recipe method is technically doing. 
 	//method is used to create hardcoded recipes
 	public static ArrayList StringArrayList(String[] stringArray) {
@@ -146,6 +146,6 @@ public class Main {
 		return stringList;
 	}
 		
-
+*/
 }//closes class
 		

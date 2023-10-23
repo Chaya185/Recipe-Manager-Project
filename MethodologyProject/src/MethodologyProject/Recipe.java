@@ -8,7 +8,7 @@ public class Recipe {
     private String name;
     private ArrayList<String> ingredients;
     private String instructions;
-    private recipeObject
+    //private recipeObject recipe;
 
     //constructor
     public Recipe(String name, ArrayList<String> ingredients, String instructions){
