@@ -7,8 +7,16 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		createRecipeList();
-		menu();
+		createRecipeList(); //call method to add all hardcoded recipes to an arraylist
+		Scanner keyboard = new Scanner(System.in);
+
+		//do while loop to display menu so long as user wants to repeat menu options
+		String repeat;
+		do {
+			menu(keyboard);
+			System.out.println("Would you like to find another recipe or submit a recipe?  ('yes/no') ");
+			repeat = keyboard.nextLine();
+		} while (repeat.equalsIgnoreCase("yes"));
 	}//closes main method
 
 	public static void createRecipeList(){
@@ -55,11 +63,9 @@ public class Main {
 				"\n"));
 	}
 	
-	public static void menu () {
-		Scanner keyboard = new Scanner(System.in);
-		
-		System.out.println("Please enter your choice below: ");
-		System.out.println("1. find recipes \n2. submit recipes  ");
+	public static void menu(Scanner keyboard) {
+
+		System.out.println("Please enter your choice below: ('1' or '2') \n1. find recipes \n2. submit recipes  ");
 		int choice = keyboard.nextInt();
 		
 		if (choice ==1) {
@@ -70,12 +76,12 @@ public class Main {
 		}
 		else {
 			System.out.println("\nERROR! INVALID CHOICE.");
-			menu();
+			menu(keyboard);
 		}
 	}//closes menu 
 		
 		
-		public static void findRecipes(Scanner keyboard) {
+	public static void findRecipes(Scanner keyboard) {
 
 //need to add code that will find certain recipes in the array list and print them 
 		
@@ -84,7 +90,7 @@ public class Main {
 		
 		
 		
-		public static void submitRecipes(Scanner keyboard) {
+	public static void submitRecipes(Scanner keyboard) {
 		String name;
 		int number;
 		
