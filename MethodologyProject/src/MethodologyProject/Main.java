@@ -27,20 +27,29 @@ public class Main {
 
 	public static void menu(Scanner keyboard, RecipeManager recipeManager) {
 
-		System.out.println("Please enter your choice below: ('1' or '2') \n1. find recipes \n2. submit recipes  ");
+		System.out.println("Please enter your choice below: ('1' or '2' or '3') \n1. "
+				+ "find recipes \n2. submit recipes \n3. Find recipes by specific ingredient ");
 		int choice = keyboard.nextInt();
-		
-		if (choice ==1) {
+
+		if (choice == 1) {
 			findRecipes(keyboard, recipeManager);
-		}
-		else if (choice ==2) {
+		} else if (choice == 2) {
 			submitRecipes(keyboard);
+		} else if (choice == 3) {
+			findRecipesByIngredient(keyboard, recipeManager);
 		}
 		else {
 			System.out.println("\nERROR! INVALID CHOICE.");
 			menu(keyboard, recipeManager);
 		}
-	}//closes menu 
+	}// closes menu
+
+	private static void findRecipesByIngredient(Scanner keyboard, RecipeManager recipeManager) {
+		System.out.println("enter an ingredient to find recipes");
+		String ingredient = keyboard.next();
+		ArrayList<String> recipes = recipeManager.searchRecipesByIngredient(ingredient);
+		System.out.println("Recipes with " + ingredient + " ingredient: " + String.join(",", recipes));
+	}
 		
 		
 	public static void findRecipes(Scanner keyboard, RecipeManager recipeManager) {

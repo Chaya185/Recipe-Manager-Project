@@ -36,4 +36,18 @@ public class RecipeManager {
         return null; // Recipe not found
     }
 
+    public ArrayList<String> searchRecipesByIngredient(String ingredient){
+        ArrayList<String> recipesWithIngredients = new ArrayList<String>();
+
+        for (Recipe recipe : recipes) {
+            for (String ingr : recipe.getIngredients()) {
+                if (ingr.contains(ingredient)) {
+                    recipesWithIngredients.add(recipe.getName());
+                    break;
+                }
+            }
+        }
+        return recipesWithIngredients;
+    }
+
 }
