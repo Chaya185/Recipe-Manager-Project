@@ -55,7 +55,11 @@ public class Main {
 		String choice = keyboard.nextLine();
 		Recipe requestedRecipe = recipeManager.getRecipeByName(choice);
 
-		System.out.println(requestedRecipe.toString());
+		if (requestedRecipe == null) {
+			System.out.println("Error! Can't find that recipe in the list");
+		} else {
+			System.out.println(requestedRecipe.toString());
+		}
 
 		//call the method to turn the array of recipes into an arrayList.
 		//ArrayList listOfRecipes = StringArrayList(listRecipes);
