@@ -8,6 +8,9 @@ public class RecipeObjects {
     public static void createRecipeList() {
         //hardcode Recipe objects
 
+        //create a recipe manager object
+        RecipeManager recipeManager = new RecipeManager();
+
         //OMELET
         // Create an Array with the ingredients
         String[] omeletIngredients = {"2 large eggs",
@@ -27,6 +30,9 @@ public class RecipeObjects {
                 "5. When the edges start to set, sprinkle the shredded cheese on one half of the omelet.\n" +
                 "6. Gently fold the other half of the omelet over the cheese and cook for a minute or two until the cheese melts.\n" +
                 "\n"));
+
+        //add the recipe to the list of recipes using recipeManager class
+        recipeManager.addRecipe(omelet);
 
 
         //PASTA
@@ -52,6 +58,9 @@ public class RecipeObjects {
                 "6. Mix until the cheese melts.\n" +
                 "\n"));
 
+        //add the recipe to the list of recipes using recipeManager class
+        recipeManager.addRecipe(pasta);
+
         //CHICKEN
         // Create an Array with the ingredients
         String[] chickenIngredients = {"4 boneless chicken breasts",
@@ -75,6 +84,9 @@ public class RecipeObjects {
                 "7. Serve the pretzel-crusted chicken over cooked rice.\n" +
                 "\n"));
 
+        //add the recipe to the list of recipes using recipeManager class
+        recipeManager.addRecipe(chicken);
+
         //SMOOTHIE
         // Create an Array with the ingredients
         String[] smoothieIngredients = {"1 mango, skin removed, cut into 1-inch dice, frozen\n" +
@@ -88,6 +100,9 @@ public class RecipeObjects {
         //create new recipe object passing in the recipe name, arrayList of ingredients and String of instructions
         Recipe smoothie = new Recipe("Fruit Smoothie", ingredients4, ("Combine all ingredients in a blender and puree until smooth, about 2 to 3 minutes.\n" +
                 "Drink immediately.\n") );
+
+        //add the recipe to the list of recipes using recipeManager class
+        recipeManager.addRecipe(smoothie);
 
         //BISCOTTI
         // Create an Array with the ingredients
@@ -117,6 +132,8 @@ public class RecipeObjects {
                 "11. Allow the biscotti to cool completely before enjoying with your favorite hot beverage.\n" +
                 "\n"));
 
+        //add the recipe to the list of recipes using recipeManager class
+        recipeManager.addRecipe(biscotti);
 
     }//closes the method create recipe list
 

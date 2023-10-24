@@ -6,13 +6,18 @@ import java.util.List;
 //testing
 //this class deals with the list of all recipes, including adding and removing recipes
 public class RecipeManager {
-    private List<Recipe> recipes = new ArrayList<>();
+    private ArrayList<Recipe> recipes = new ArrayList<>();
+
+    //constructor
+    public RecipeManager(){
+        recipes = new ArrayList<>();
+    }
 
     public void addRecipe(Recipe recipe){
         recipes.add(recipe);
     }
 
-    public List<Recipe> getAllRecipes(){
+    public ArrayList<Recipe> getAllRecipes(){
         return recipes;
     }
 
