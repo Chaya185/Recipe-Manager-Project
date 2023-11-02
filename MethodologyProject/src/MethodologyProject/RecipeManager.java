@@ -36,12 +36,12 @@ public class RecipeManager {
         return null; // Recipe not found
     }
 
-    public ArrayList<String> searchRecipesByIngredient(String ingredient){
+    public ArrayList<String> searchRecipesByIngredient(String ingredient, String  ingredient2){
         ArrayList<String> recipesWithIngredients = new ArrayList<String>();
 
         for (Recipe recipe : recipes) {
             for (String ingr : recipe.getIngredients()) {
-                if (ingr.contains(ingredient)) {
+                if (ingr.contains(ingredient) ||ingr.contains(ingredient2)) {
                     recipesWithIngredients.add(recipe.getName());
                     break;
                 }
