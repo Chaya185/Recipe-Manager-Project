@@ -45,10 +45,20 @@ public class Main {
 	}// closes menu
 
 	private static void findRecipesByIngredient(Scanner keyboard, RecipeManager recipeManager) {
+		String again;
+		String ingredient2="";
 		System.out.println("enter an ingredient to find recipes");
 		String ingredient = keyboard.next();
-		ArrayList<String> recipes = recipeManager.searchRecipesByIngredient(ingredient);
-		System.out.println("Recipes with " + ingredient + " ingredient: " + String.join(",", recipes));
+		System.out.println("Would you like to find another ingredient ");
+		again = keyboard.next();
+		if (again.equalsIgnoreCase("yes")) {
+			System.out.println("enter an ingredient to find recipes");
+			 ingredient2= keyboard.next();
+			}
+		
+		
+		ArrayList<String> recipes = recipeManager.searchRecipesByIngredient(ingredient, ingredient2 );
+		System.out.println("Recipes with " + ingredient +" or " + ingredient2 +" ingredient: " + String.join(",", recipes));
 	}
 		
 		
