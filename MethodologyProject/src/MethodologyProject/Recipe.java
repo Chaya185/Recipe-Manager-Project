@@ -50,8 +50,8 @@ public class Recipe {
     @Override
     public  String toString() {
     	StringBuilder sb = new StringBuilder();
-    	sb.append("\nHere is the recipe: " );
-    	sb.append("\nName of recipe: " + getName());
+    	//sb.append("\nHere is the recipe: " );
+    	sb.append("\nRecipe Name: " + getName());
     	sb.append("\nIngredients: " + getIngredients());
     	sb.append("\nInstructions: " + getInstructions());;
     	return sb.toString();

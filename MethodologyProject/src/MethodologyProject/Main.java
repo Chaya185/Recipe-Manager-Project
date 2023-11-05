@@ -4,9 +4,17 @@ package MethodologyProject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		//open the recipe file
+//ADD THE CORRECT FILE NAME
+		String filename = "recipe.txt";
+		FileWriter fwriter = new FileWriter(filename, true);
+
+
+
 		//create a recipe manager object
 		RecipeManager recipeManager = new RecipeManager();
 
@@ -19,13 +27,16 @@ public class Main {
 		String repeat;
 		do {
 //ADD CODE TO display list of recipes
-			menu(keyboard, recipeManager);
+			menu(keyboard, recipeManager, fwriter);
 			System.out.println("Would you like to find another recipe or submit a recipe?  ('yes/no') ");
 			repeat = keyboard.nextLine();
 		} while (repeat.equalsIgnoreCase("yes"));
+
+		//close the recipe text file
+		fwriter.close();
 	}//closes main method
 
-	public static void menu(Scanner keyboard, RecipeManager recipeManager) {
+	public static void menu(Scanner keyboard, RecipeManager recipeManager, FileWriter fwriter) throws IOException {
 
 		System.out.println("Please enter your choice below: ('1' or '2' or '3') \n1. "
 				+ "find recipes \n2. submit recipes \n3. Find recipes by specific ingredient ");
@@ -34,13 +45,13 @@ public class Main {
 		if (choice == 1) {
 			findRecipes(keyboard, recipeManager);
 		} else if (choice == 2) {
-			submitRecipes(keyboard);
+			submitRecipes(keyboard, fwriter);
 		} else if (choice == 3) {
 			findRecipesByIngredient(keyboard, recipeManager);
 		}
 		else {
 			System.out.println("\nERROR! INVALID CHOICE.");
-			menu(keyboard, recipeManager);
+			menu(keyboard, recipeManager, fwriter);
 		}
 	}// closes menu
 
@@ -92,7 +103,8 @@ public class Main {
 		
 		
 		
-	public static void submitRecipes(Scanner keyboard) {
+	public static void submitRecipes(Scanner keyboard, FileWriter fwriter) throws IOException {
+
 		String name;
 		int number;
 		
@@ -123,6 +135,11 @@ public class Main {
 			
 		System.out.println();
 		System.out.println(recipe.toString());
+
+		//add the recipe to the file using the toString method
+		PrintWriter outputFile = new PrintWriter(fwriter);
+		outputFile.println(recipe);
+		outputFile.println("\n----------------");
 		
 		//add the recipe to list of recipes using recipeManager
 		RecipeManager addRecipeObj = new RecipeManager();
@@ -131,8 +148,7 @@ public class Main {
 			System.out.println("recipe is getting submitted!");
 			
 //need code here that will access a recipe method that adds this newly created recipe to the recipe array list 
-			
-			
+
 		}//closes submitRecipes method 
 
 
