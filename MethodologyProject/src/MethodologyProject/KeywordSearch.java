@@ -11,7 +11,7 @@ public class KeywordSearch {
         String filePath = "C:\\Users\\goldp\\OneDrive\\Documents\\semester 3 (Fall 23)\\Computer Methodology\\compMeth\\bin\\MethodologyProject\\ChocChipCookies.txt";
     
         String[] keywords = {"Pizza"};
-        String breakline = "STOP";
+        String breakline = "----";
         boolean shouldPrint = false;
         
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {

@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		//open the recipe file
 //ADD THE CORRECT FILE NAME
-		String filename = "recipe.txt";
+		String filename = "Recipes";
 		FileWriter fwriter = new FileWriter(filename, true);
 
 
