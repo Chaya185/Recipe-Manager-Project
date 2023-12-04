@@ -2,11 +2,12 @@
 package MethodologyProject;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.io.*;
 
 public class Main {
+	static ArrayList<String> listRecipes = new ArrayList<>();
+	
 	public static void main(String[] args) throws IOException {
 		//open the recipe file
 //ADD THE CORRECT FILE NAME
@@ -27,33 +28,51 @@ public class Main {
 		String repeat;
 		do {
 //ADD CODE TO display list of recipes
-			menu(keyboard, recipeManager, fwriter);
-			System.out.println("Would you like to find another recipe or submit a recipe?  ('yes/no') ");
+			menu(keyboard, recipeManager, fwriter, listRecipes);
+			System.out.println("Would you like to find another recipe, submit a recipe or rate a recipe?  ('yes/no') ");
 			repeat = keyboard.nextLine();
+			
 		} while (repeat.equalsIgnoreCase("yes"));
 
 		//close the recipe text file
 		fwriter.close();
 	}//closes main method
 
-	public static void menu(Scanner keyboard, RecipeManager recipeManager, FileWriter fwriter) throws IOException {
+	public static void menu(Scanner keyboard, RecipeManager recipeManager, FileWriter fwriter, ArrayList<String> listRecipes) throws IOException {
 
 		System.out.println("Please enter your choice below: ('1' or '2' or '3') \n1. "
-				+ "find recipes \n2. submit recipes \n3. Find recipes by specific ingredient ");
+				+ "find recipes \n2. submit recipes \n3. Find recipes by specific ingredient. \n4. Rate a recipe. ");
 		int choice = keyboard.nextInt();
 
 		if (choice == 1) {
 			findRecipes(keyboard, recipeManager);
 		} else if (choice == 2) {
-			submitRecipes(keyboard, fwriter);
+			submitRecipes(keyboard, fwriter, Main.listRecipes);
 		} else if (choice == 3) {
 			findRecipesByIngredient(keyboard, recipeManager);
 		}
+		else if (choice == 4){
+			rateRecipe(keyboard,recipeManager);
+		}
 		else {
 			System.out.println("\nERROR! INVALID CHOICE.");
-			menu(keyboard, recipeManager, fwriter);
+			menu(keyboard, recipeManager, fwriter, Main.listRecipes);
 		}
 	}// closes menu
+
+	private static void rateRecipe(Scanner keyboard, RecipeManager recipeManager) {
+		System.out.println("Which recipe would you like to rate? ");
+		Recipe requestedRecipe = getRecipeFromList(keyboard, recipeManager);
+		System.out.println("Rate the recipe from 1-10 ");
+		int rating = keyboard.nextInt();
+		while (rating <1 || rating > 10){
+			System.out.println("Error! invalid rating number");
+			System.out.println("Rate the recipe from 1-10 ");
+			rating = keyboard.nextInt();
+		}
+		requestedRecipe.setRating(rating);
+		keyboard.nextLine();
+	}
 
 	private static void findRecipesByIngredient(Scanner keyboard, RecipeManager recipeManager) {
 		String again;
@@ -61,7 +80,7 @@ public class Main {
 		System.out.println("enter an ingredient to find recipes");
 		String ingredient = keyboard.next();
 		System.out.println("Would you like to find another ingredient ");
-		again = keyboard.next();
+		again = keyboard.nextLine();
 		if (again.equalsIgnoreCase("yes")) {
 			System.out.println("enter an ingredient to find recipes");
 			 ingredient2= keyboard.next();
@@ -74,16 +93,7 @@ public class Main {
 		
 		
 	public static void findRecipes(Scanner keyboard, RecipeManager recipeManager) {
-		//add the names of the recipes to an array list
-		String[] listRecipes = {"Omelet", "Pasta", "Chicken", "Smoothie", "Biscotti"};
-		// Using a for loop to display the strings in the array
-		for (int i = 0; i < listRecipes.length; i++) {
-			System.out.println(listRecipes[i]);
-		}
-		keyboard.nextLine();
-		System.out.println("Choose from the above recipes: (type the word) ");
-		String choice = keyboard.nextLine();
-		Recipe requestedRecipe = recipeManager.getRecipeByName(choice);
+		Recipe requestedRecipe = getRecipeFromList(keyboard, recipeManager);
 
 		if (requestedRecipe == null) {
 			System.out.println("Error! Can't find that recipe in the list");
@@ -98,12 +108,29 @@ public class Main {
 
 //need to add code that will find certain recipes in the array list and print them 
 		
-		}//closes findRecipes method 
-		
-		
-		
-		
-	public static void submitRecipes(Scanner keyboard, FileWriter fwriter) throws IOException {
+		}//closes findRecipes method
+
+	private static Recipe getRecipeFromList(Scanner keyboard, RecipeManager recipeManager) {
+		//add the names of the recipes to an array list
+		ArrayList<String> listRecipes = new ArrayList<>();
+		listRecipes.add("Omelet");
+		listRecipes.add("Pasta");
+		listRecipes.add("Chicken");
+		listRecipes.add("Smoothie");
+		listRecipes.add("Biscotti");
+		// Using a for loop to display the strings in the array
+		for (int i = 0; i < listRecipes.size(); i++) {
+			System.out.println(listRecipes.get(i));
+		}
+		keyboard.nextLine();
+		System.out.println("Choose from the above recipes: (type the word) ");
+		String choice = keyboard.nextLine();
+		Recipe requestedRecipe = recipeManager.getRecipeByName(choice);
+		return requestedRecipe;
+	}
+
+
+	public static void submitRecipes(Scanner keyboard, FileWriter fwriter, ArrayList<String> listRecipes) throws IOException {
 
 		String name;
 		int number;
@@ -112,6 +139,7 @@ public class Main {
 		keyboard.nextLine();
 		  System.out.println("Please enter the name of the recipe: ");
 			name=keyboard.nextLine();
+			listRecipes.add(name);
 			
 			System.out.println("How many ingredients does this recipe require?");
 			number=keyboard.nextInt();
@@ -147,7 +175,8 @@ public class Main {
 			
 			System.out.println("recipe is getting submitted!");
 			
-//need code here that will access a recipe method that adds this newly created recipe to the recipe array list 
+//need code here that will access a recipe method that adds this newly created recipe to the recipe array list
+
 
 		}//closes submitRecipes method 
 
@@ -185,7 +214,7 @@ public class Main {
 		String[] pastaIngredients = {"1 box of pasta",
 				"Salt to taste",
 				"1/4 cup mozzarella cheese",
-				"1/4 cup marinera sauce",
+				"1/4 cup marinara sauce",
 				"1 tsp butter",
 				"2 tbs milk ",
 				"1/2 tsp red pepper flakes",
@@ -199,7 +228,7 @@ public class Main {
 				"2. Add some salt and once boiled, add your pasta.\n" +
 				"3. Cook pasta for about 11 minutes on medium flame.\n" +
 				"4. Once cooked, drain your pasta and pour cold water over it.\n" +
-				"5. Now add your marinera sauce, cheese, butter, milk, red pepper flakes, basil and salt.\n" +
+				"5. Now add your marinara sauce, cheese, butter, milk, red pepper flakes, basil and salt.\n" +
 				"6. Mix until the cheese melts.\n" +
 				"\n"));
 

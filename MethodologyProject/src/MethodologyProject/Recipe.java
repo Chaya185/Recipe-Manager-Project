@@ -8,6 +8,7 @@ public class Recipe {
     private String name;
     private ArrayList<String> ingredients;
     private String instructions;
+    private  int rating;
     //private recipeObject recipe;
 
     //constructor
@@ -33,6 +34,11 @@ public class Recipe {
         this.instructions = instructions;
     }
 
+    public void setRating(int rating){
+        this.rating = rating;
+    }
+
+    public  int getRating() {return rating; }
     //getters
     public String getName(){
         return name;
@@ -53,7 +59,8 @@ public class Recipe {
     	//sb.append("\nHere is the recipe: " );
     	sb.append("\nRecipe Name: " + getName());
     	sb.append("\nIngredients: " + getIngredients());
-    	sb.append("\nInstructions: " + getInstructions());;
+    	sb.append("\nInstructions: " + getInstructions());
+        sb.append("\nRating: " + getRating());
     	return sb.toString();
     	}
 }
