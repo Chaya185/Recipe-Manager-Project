@@ -28,7 +28,7 @@ public class Main {
 		do {
 //ADD CODE TO display list of recipes
 			menu(keyboard, recipeManager, fwriter, listRecipes);
-			System.out.println("Would you like to find another recipe, submit a recipe or rate a recipe?  ('yes/no') ");
+			System.out.println("Would you like to view menu again?  ('yes/no') ");
 			repeat = keyboard.nextLine();
 			
 		} while (repeat.equalsIgnoreCase("yes"));
@@ -82,6 +82,7 @@ public class Main {
 		String ingredient2="";
 		System.out.println("enter an ingredient to find recipes");
 		String ingredient = keyboard.next();
+		keyboard.nextLine();
 		System.out.println("Would you like to find another ingredient ");
 		again = keyboard.nextLine();
 		if (again.equalsIgnoreCase("yes")) {
@@ -91,7 +92,8 @@ public class Main {
 		
 		
 		ArrayList<String> recipes = recipeManager.searchRecipesByIngredient(ingredient, ingredient2 );
-		System.out.println("Recipes with " + ingredient +" or " + ingredient2 +" ingredient: " + String.join(",", recipes));
+		System.out.println("Recipes with " + ingredient +" and " + ingredient2 +" ingredient: " + String.join(",", recipes));
+		keyboard.nextLine();
 	}
 		
 		
