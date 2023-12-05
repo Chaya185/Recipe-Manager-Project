@@ -1,4 +1,3 @@
-
 package MethodologyProject;
 
 import java.util.ArrayList;
@@ -45,7 +44,11 @@ public class Main {
 		int choice = keyboard.nextInt();
 
 		if (choice == 1) {
-			findRecipes(keyboard, recipeManager);
+			KeywordSearch key = new KeywordSearch();
+	    	key.main(null);
+	    	keyboard.nextLine();
+			
+			//findRecipes(keyboard, recipeManager);
 		} else if (choice == 2) {
 			submitRecipes(keyboard, fwriter, Main.listRecipes);
 		} else if (choice == 3) {
@@ -60,7 +63,7 @@ public class Main {
 		}
 	}// closes menu
 
-	private static void rateRecipe(Scanner keyboard, RecipeManager recipeManager) {
+	private static void rateRecipe(Scanner keyboard, RecipeManager recipeManager) throws FileNotFoundException {
 		System.out.println("Which recipe would you like to rate? ");
 		Recipe requestedRecipe = getRecipeFromList(keyboard, recipeManager);
 		System.out.println("Rate the recipe from 1-10 ");
@@ -92,7 +95,8 @@ public class Main {
 	}
 		
 		
-	public static void findRecipes(Scanner keyboard, RecipeManager recipeManager) {
+	public static void findRecipes(Scanner keyboard, RecipeManager recipeManager) throws FileNotFoundException {
+		 
 		Recipe requestedRecipe = getRecipeFromList(keyboard, recipeManager);
 
 		if (requestedRecipe == null) {
@@ -110,14 +114,16 @@ public class Main {
 		
 		}//closes findRecipes method
 
-	private static Recipe getRecipeFromList(Scanner keyboard, RecipeManager recipeManager) {
+	private static Recipe getRecipeFromList(Scanner keyboard, RecipeManager recipeManager) throws FileNotFoundException {
 		//add the names of the recipes to an array list
+		
 		ArrayList<String> listRecipes = new ArrayList<>();
 		listRecipes.add("Omelet");
 		listRecipes.add("Pasta");
 		listRecipes.add("Chicken");
 		listRecipes.add("Smoothie");
 		listRecipes.add("Biscotti");
+		
 		// Using a for loop to display the strings in the array
 		for (int i = 0; i < listRecipes.size(); i++) {
 			System.out.println(listRecipes.get(i));
@@ -327,4 +333,3 @@ public class Main {
 		
 
 }//closes class
-		
