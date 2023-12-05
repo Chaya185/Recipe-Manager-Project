@@ -12,7 +12,7 @@ public class KeywordSearch {
     public static void main(String[] args) throws FileNotFoundException {
        //String filePath = "/Users/saracousin/git/MethodologyProject/MethodologyProject/src/MethodologyProject/ChocChipCookies";
     	//try {
-            File myFile = new File("Recipes.txt");
+            File myFile = new File("Recipes");
             
             Scanner fileScanner = new Scanner(myFile);
            // int numWinners = 104;
