@@ -1,6 +1,7 @@
 package MethodologyProject;
 
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 //testing
@@ -27,13 +28,17 @@ public class RecipeManager {
     }
 
     //method to retrieve recipe based on the name of the recipe passed in. It searches the array for requested recipe
-    public Recipe getRecipeByName(String recipeName) {
+    public Recipe getRecipeByName(String recipeName) throws FileNotFoundException {
         for (Recipe recipe : recipes) {
             if (recipe.getName().equalsIgnoreCase(recipeName)) {
                 return recipe;
             }
         }
-        return null; // Recipe not found
+        KeywordSearch key = new KeywordSearch();
+    	key.main(null);
+        return null; // Recipe not found*/
+    	
+    	//return recipes ;
     }
 
     public ArrayList<String> searchRecipesByIngredient(String ingredient, String  ingredient2){
