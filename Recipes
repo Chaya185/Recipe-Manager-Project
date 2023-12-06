@@ -259,3 +259,10 @@ Ingredients: [coffee, sugar, water, milk]
 Instructions: combine and stir
 
 ----------------
+
+Recipe Name: example
+Ingredients: [test1, test2]
+Instructions: testing
+Rating: 0
+
+----------------
