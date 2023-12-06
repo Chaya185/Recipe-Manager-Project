@@ -19,7 +19,7 @@ public class Main {
 		//create a recipe manager object
 		RecipeManager recipeManager = new RecipeManager();
 
-	//	createRecipeList(recipeManager); //call the method to create all recipes objects
+		createRecipeList(recipeManager); //call the method to create all recipes objects
 
 		//createRecipeList(); //call method to add all hardcoded recipes to an arraylist
 		Scanner keyboard = new Scanner(System.in);
@@ -195,7 +195,7 @@ public class Main {
 
 		}//closes submitRecipes method 
 
-/*
+
 	public static void createRecipeList(RecipeManager recipeManager) {
 		//hardcode Recipe objects
 
@@ -326,7 +326,7 @@ public class Main {
 
 	}//closes the method create recipe list
 
-*/
+
 
 
 	//this method accepts an array of strings, converts it to an arrayList and return the arrayList if prompted AKA what the find recipe method is technically doing.
