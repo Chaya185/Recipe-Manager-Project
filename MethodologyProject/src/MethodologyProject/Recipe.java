@@ -55,12 +55,11 @@ public class Recipe {
     //toString
     @Override
     public  String toString() {
-    	StringBuilder sb = new StringBuilder();
-    	//sb.append("\nHere is the recipe: " );
-    	sb.append("\nRecipe Name: " + getName());
-    	sb.append("\nIngredients: " + getIngredients());
-    	sb.append("\nInstructions: " + getInstructions());
-        sb.append("\nRating: " + getRating());
-    	return sb.toString();
+        //sb.append("\nHere is the recipe: " );
+        String sb = "\nRecipe Name: " + getName() +
+                "\nIngredients: " + getIngredients() +
+                "\nInstructions: " + getInstructions() +
+                "\nRating: " + getRating();
+    	return sb;
     	}
 }

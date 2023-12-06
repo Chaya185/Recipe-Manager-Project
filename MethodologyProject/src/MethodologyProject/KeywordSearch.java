@@ -46,10 +46,11 @@ public class KeywordSearch {
 			        shouldPrint = false;
 			    }
 				 for (String keyword : keywords) {
-			         if (line.equalsIgnoreCase(keyword)) {
-			             // Found the "cookies" keyword, start printing
-			             shouldPrint = true;
-			         }
+                     if (line.equalsIgnoreCase(keyword)) {
+                         // Found the "cookies" keyword, start printing
+                         shouldPrint = true;
+                         break;
+                     }
 			     }
 				
 				 if (shouldPrint) {

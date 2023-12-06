@@ -35,7 +35,7 @@ public class RecipeManager {
             }
         }
         KeywordSearch key = new KeywordSearch();
-    	key.main(null);
+    	KeywordSearch.main(null);
         return null; // Recipe not found*/
     	
     	//return recipes ;
