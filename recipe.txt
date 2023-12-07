@@ -1,0 +1,32 @@
+
+Recipe Name: omelet
+Ingredients: [egg, salt, pepper, oil]
+Instructions: pour and sprinkle
+
+----------------
+
+
+Recipe Name: pizza
+Ingredients: [dough, sauce, cheese]
+Instructions: roll out dough, add sauce and then cheese on top. bake 25 min
+
+----------------
+
+
+Recipe Name: coffee
+Ingredients: [milk, water, coffee, sugar]
+Instructions: combine and stir
+
+----------------
+
+Recipe Name: coffee
+Ingredients: [coffee, sugar, water, milk]
+Instructions: Combine and stir
+
+----------------
+
+Recipe Name: coffee
+Ingredients: [coffee, sugar, milk]
+Instructions: add
+
+----------------
