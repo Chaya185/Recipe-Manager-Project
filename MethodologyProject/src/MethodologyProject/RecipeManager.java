@@ -35,10 +35,10 @@ public class RecipeManager {
             }
         }
         KeywordSearch key = new KeywordSearch();
-    	KeywordSearch.main(null);
+        KeywordSearch.main(null);
         return null; // Recipe not found*/
-    	
-    	//return recipes ;
+
+        //return recipes ;
     }
 
     public ArrayList<String> searchRecipesByIngredient(String ingredient, String  ingredient2){
@@ -48,7 +48,7 @@ public class RecipeManager {
             for (String ingr : recipe.getIngredients()) {
                 if (ingr.contains(ingredient) && ingr.contains(ingredient2)) {
                     recipesWithIngredients.add(recipe.getName());
-                    
+
                     break;
                 }
             }
