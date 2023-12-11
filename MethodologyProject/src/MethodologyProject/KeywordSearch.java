@@ -83,7 +83,7 @@ public class KeywordSearch {
 			while ((line = br.readLine()) != null) {
 
 				if (line.contains(separator)) {
-					// Found the separator, print the next line which is a recipe name
+					// Found the separator, read and print the next line which is a recipe name
 					line = br.readLine();
 					System.out.println(line);
 					//add the recipe name to the arrayList
