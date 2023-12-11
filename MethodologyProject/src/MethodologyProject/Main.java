@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Main {
-	static ArrayList<String> listRecipes = new ArrayList<>();
+	public static ArrayList<String> listRecipes = new ArrayList<>();
 	
 	public static void main(String[] args) throws IOException {
 		//open the recipe file

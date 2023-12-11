@@ -5,11 +5,11 @@ import java.util.ArrayList;
 //this class takes the reciped and places them into objects
 public class RecipeObjects {
 
-    public static void createRecipeList() {
+    /*public static void createRecipeList() {
         //hardcode Recipe objects
 
         //create a recipe manager object
-        RecipeManager recipeManager = new RecipeManager();
+        //RecipeManager recipeManager = new RecipeManager();
 
         //OMELET
         // Create an Array with the ingredients
@@ -137,7 +137,7 @@ public class RecipeObjects {
 
     }//closes the method create recipe list
 
-
+*/
 
 
     //this method accepts an array of strings, converts it to an arrayList and return the arrayList if prompted AKA what the find recipe method is technically doing.

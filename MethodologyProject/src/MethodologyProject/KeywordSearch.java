@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class KeywordSearch {
@@ -69,5 +70,29 @@ public class KeywordSearch {
 		String recipeRequest = scanner.nextLine();
 		String[] keywords = {recipeRequest};
 		return keywords;
+	}
+
+	//this method is used to read through the file and find all the recipe names. It displays the recipe names and adds them to an arrayList
+	private static void FindAndPrintRecipeName(File myFile) {
+		String separator = "---";
+		ArrayList<String> recipeNames = new ArrayList<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(myFile))) {
+			String line;
+
+			while ((line = br.readLine()) != null) {
+
+				if (line.contains(separator)) {
+					// Found the separator, print the next line which is a recipe name
+					line = br.readLine();
+					System.out.println(line);
+					//add the recipe name to the arrayList
+					recipeNames.add(line);
+				}
+
+			}
+		} catch (IOException e) {
+			System.err.println("Error reading the file: " + e.getMessage());
+		}
 	}
 }
