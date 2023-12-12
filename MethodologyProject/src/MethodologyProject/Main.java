@@ -196,6 +196,45 @@ public class Main {
 		}//closes submitRecipes method 
 
 
+	//method that reads through file to add all the recipe names to a list
+	//needs to be called - everytime menu is called
+	public static void addRecipeNamesToList() throws IOException {
+		String filePath = "Recipes";
+
+		//initialize ArrayList
+		ArrayList<String> lines = new ArrayList<>();
+
+		//opens file
+		BufferedReader reader = new BufferedReader(new FileReader(filePath));
+
+		//flag to indicate breakpoint
+		boolean foundBreakPoint = false;
+
+		//reads each line
+		String line;
+		while (true) {
+            if ((line = reader.readLine()) == null) break;
+            //check if the line is the breakpoint
+			if (line.equals("-------")) {
+				foundBreakPoint = true;
+			} else if (foundBreakPoint) {
+				//add the line to the ArrayList
+				lines.add(line);
+				break; //stops reading after first line after breakpoint
+			}
+		}
+
+		//close the reader
+		reader.close();
+
+		//prints
+		System.out.println("Lines after breakpoint:");
+		for (String names : lines) {
+			System.out.println(names);
+		}
+	}
+
+
 	public static void createRecipeList(RecipeManager recipeManager) {
 		//hardcode Recipe objects
 
@@ -337,6 +376,9 @@ public class Main {
         Collections.addAll(stringList, stringArray);
 		return stringList;
 	}
+
+
+
 		
 
 }//closes class
