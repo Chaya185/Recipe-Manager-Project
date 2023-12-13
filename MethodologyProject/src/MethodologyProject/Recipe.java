@@ -1,7 +1,7 @@
 package MethodologyProject;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
 //this class is used to create recipe objects. It holds the recipe name, list of ingredients, and list of instructions
 public class Recipe {
@@ -17,10 +17,10 @@ public class Recipe {
         this.ingredients = ingredients;
         this.instructions = instructions;
     }
-    //empty constructor 
+    //empty constructor
     public Recipe() {
     }
-    	
+
     //setters
     public void setName(String name){
         this.name = name;
@@ -51,7 +51,7 @@ public class Recipe {
     public String getInstructions(){
         return instructions;
     }
-    
+
     //toString
     @Override
     public  String toString() {
