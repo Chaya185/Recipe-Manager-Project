@@ -4,6 +4,7 @@ package MethodologyProject;
 		import java.io.*;
 
 public class Main {
+	public static ArrayList<String> recipeNameList;
 	public static void main(String[] args) throws IOException {
 		//open the recipe file that contains all the recipes and their info
 		String filename = "Recipes";
@@ -14,7 +15,6 @@ public class Main {
 		//do while loop to display menu so long as user wants to repeat menu options
 		String repeat;
 		do {
-			addRecipeNamesToList(); //this reads through the recipe file and adds all the recipes to a list
 			menu(keyboard, fwriter);
 			System.out.println("Would you like to view the menu again?  ('yes/no')");
 			repeat = keyboard.nextLine();
@@ -33,8 +33,7 @@ public class Main {
 
 		if (choice == 1) {
 			System.out.println();
-			addRecipeNamesToList(); //Rina's method
-			FindAndPrintRecipeName(); //Chayki's method
+			recipeNameList = addRecipeNamesToList();
 			keyboard.nextLine();
 
 			//findRecipes(keyboard, recipeManager);
@@ -74,10 +73,12 @@ public class Main {
 		}
 		//consume buffer
 		keyboard.nextLine();
+		keyboard.nextLine();
 
 		System.out.println("Enter the recipe instructions: ");
 		String instructions = keyboard.nextLine();
 
+		keyboard.nextLine();
 		//create the object and pass to constructor
 		Recipe recipe = new Recipe(name, ingredientsList, instructions);
 
@@ -86,8 +87,8 @@ public class Main {
 
 		//add the recipe to the file using the toString method
 		PrintWriter outputFile = new PrintWriter(fwriter);
+		outputFile.println("\n---------");
 		outputFile.println(recipe);
-		outputFile.println("\n----------------");
 
 		//add the recipe to list of recipes using recipeManager
 		RecipeManager addRecipeObj = new RecipeManager();
@@ -139,37 +140,18 @@ public class Main {
 			System.out.println("Rate the recipe from 1-10 ");
 			rating = keyboard.nextInt();
 		}
-		//commented out becuase its an error
+		//commented out becuase it's an error
 		//requestedRecipe.setRating(rating);
 		keyboard.nextLine();
 	}
 
-	//WHAT IS THE PURPOSE OF THIS METHOD???
-	/*public static void findRecipes (Scanner keyboard, RecipeManager recipeManager) throws FileNotFoundException {
-		Recipe requestedRecipe = getRecipeFromList(keyboard, recipeManager);
-
-		if (requestedRecipe == null) {
-			System.out.println("Error! Can't find that recipe in the list");
-		} else {
-			System.out.println(requestedRecipe);
-		}
-
-		//call the method to turn the array of recipes into an arrayList.
-		//ArrayList listOfRecipes = StringArrayList(listRecipes);
-
-
-//need to add code that will find certain recipes in the array list and print them
-
-	}//closes findRecipes method*/
-
-
 	//method that reads through file to add all the recipe names to a list
 	//needs to be called - everytime menu is called
-	public static void addRecipeNamesToList () throws IOException {
+	public static ArrayList<String> addRecipeNamesToList () throws IOException {
 		String filePath = "Recipes";
 
 		//initialize ArrayList
-		ArrayList<String> lines = new ArrayList<>();
+		ArrayList<String> recipeNamesList = new ArrayList<>();
 
 		//opens file
 		BufferedReader reader = new BufferedReader(new FileReader(filePath));
@@ -178,16 +160,15 @@ public class Main {
 		boolean foundBreakPoint = false;
 
 		//reads each line
-		String line;
-		while (true) {
-			if ((line = reader.readLine()) == null) break;
-			//check if the line is the breakpoint
-			if (line.equals("-------")) {
-				foundBreakPoint = true;
-			} else if (foundBreakPoint) {
-				//add the line to the ArrayList
-				lines.add(line);
-				break; //stops reading after first line after breakpoint
+		String separator;
+		while ((separator = reader.readLine()) != null) {
+
+			if (separator.contains("-----")) {
+				// Found the separator, read and print the next line which is a recipe name
+				separator = reader.readLine();
+				System.out.println(separator);
+				//add the recipe name to the arrayList
+				recipeNamesList.add(separator);
 			}
 		}
 
@@ -195,33 +176,10 @@ public class Main {
 		reader.close();
 
 		//prints
-		System.out.println("Lines after breakpoint:");
-		for (String names : lines) {
+		System.out.println("Recipe Names:");
+		for (String names : recipeNamesList) {
 			System.out.println(names);
 		}
+		return recipeNamesList;
 	}
-
-
-	//this method is used to read through the file and find all the recipe names. It displays the recipe names and adds them to an arrayList
-	public static void FindAndPrintRecipeName () {
-		String separator = "---";
-		ArrayList<String> recipeNames = new ArrayList<>();
-
-		try (BufferedReader br = new BufferedReader(new FileReader("Recipes"))) {
-			String line;
-
-			while ((line = br.readLine()) != null) {
-
-				if (line.contains(separator)) {
-					// Found the separator, read and print the next line which is a recipe name
-					line = br.readLine();
-					System.out.println(line);
-					//add the recipe name to the arrayList
-					recipeNames.add(line);
-				}
-			}
-		} catch (IOException e) {
-			System.err.println("Error reading the file: " + e.getMessage());
-		}
-	}//closes class
 }

@@ -58,7 +58,6 @@ public class RecipeManager {
             for (String ingr : recipe.getIngredients()) {
                 if (ingr.contains(ingredient) && ingr.contains(ingredient2)) {
                     recipesWithIngredients.add(recipe.getName());
-
                     break;
                 }
             }
