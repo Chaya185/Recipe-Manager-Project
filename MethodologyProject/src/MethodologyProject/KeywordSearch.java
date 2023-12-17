@@ -2,19 +2,20 @@ package MethodologyProject;
 
 		import java.io.BufferedReader;
 		import java.io.File;
+		import java.io.FileNotFoundException;
 		import java.io.FileReader;
 		import java.io.IOException;
 		import java.util.Scanner;
 
 public class KeywordSearch {
-    /*public static void main(String[] args) throws FileNotFoundException {
+    public static void body() throws FileNotFoundException {
         File myFile = new File("Recipes");
 
         Scanner fileScanner = new Scanner(myFile);
         searchForRecipesInFile(myFile);
-    } */
+    } 
 
-	public void searchForRecipesInFile(File myFile) {
+	public static void  searchForRecipesInFile(File myFile) {
 		String[] keywords = AskRecipe();
 		String breakline = "---";
 		boolean shouldPrint = false;
@@ -22,7 +23,7 @@ public class KeywordSearch {
 		FindAndPrintrecipe(myFile, keywords, breakline, shouldPrint);
 	}
 
-	public void FindAndPrintrecipe(File myFile, String[] keywords, String breakline, boolean shouldPrint) {
+	public static void FindAndPrintrecipe(File myFile, String[] keywords, String breakline, boolean shouldPrint) {
 		try (BufferedReader br = new BufferedReader(new FileReader(myFile))) {
 			String line;
 
@@ -50,7 +51,7 @@ public class KeywordSearch {
 		}
 	}
 
-	public String[] AskRecipe() {
+	public static String[] AskRecipe() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("what recipe would you like to look for?");
 		String recipeRequest = scanner.nextLine();
