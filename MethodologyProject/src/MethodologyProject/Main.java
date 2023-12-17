@@ -51,7 +51,8 @@ public class Main {
 
 	public static void submitRecipes(Scanner keyboard, FileWriter fwriter) throws IOException {
 		String name;
-		int number;
+		int number = 0; //initialize with a default value
+		boolean validInput = false;
 		BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
 
 		//consume buffer
@@ -61,8 +62,21 @@ public class Main {
 //maybe we can add the recipe name to Rina's arrayList created in her new method?
 		//listRecipes.add(name);
 
-		System.out.println("How many ingredients does this recipe require?");
-		number = keyboard.nextInt();
+		//input validation, only an int is entered
+		while (!validInput) {
+			System.out.println("How many ingredients does this recipe require?");
+			if (keyboard.hasNextInt()) {
+				number = keyboard.nextInt();
+				if (number > 0) {
+					validInput = true;
+				} else {
+					System.out.println("Error! Please enter an int for number of ingredients.");
+				}
+			} else {
+				System.out.println("Error! Please enter an int for number of ingredients.");
+				keyboard.nextLine(); // consume the invalid input
+			}
+		}
 		ArrayList<String> ingredientsList = new ArrayList<>();
 
 		//for loop to get the ingredients and add to list
