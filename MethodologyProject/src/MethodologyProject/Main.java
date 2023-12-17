@@ -71,14 +71,10 @@ public class Main {
 			System.out.println("Enter ingredient " + i + ":");
 			ingredientsList.add(buf.readLine()); //used the buffer so that it doesnt truncate an ingredient with several words
 		}
-		//consume buffer
-		keyboard.nextLine();
-		keyboard.nextLine();
 
 		System.out.println("Enter the recipe instructions: ");
 		String instructions = keyboard.nextLine();
 
-		keyboard.nextLine();
 		//create the object and pass to constructor
 		Recipe recipe = new Recipe(name, ingredientsList, instructions);
 

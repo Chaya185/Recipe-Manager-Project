@@ -57,9 +57,13 @@ public class Recipe {
     public  String toString() {
         StringBuilder sb = new StringBuilder();
         //sb.append("\nHere is the recipe: " );
-        sb.append("\nRecipe Name: " + getName());
-        sb.append("\nIngredients: " + getIngredients());
-        sb.append("\nInstructions: " + getInstructions());
+        sb.append(getName());
+        sb.append("\n\nIngredients:\n");
+        //List<String> listIngredients = getInstructions();
+        for (String item : ingredients) {
+            sb.append(item + "\n");
+        }
+        sb.append("\nInstructions:\n" + getInstructions());
         sb.append("\nRating: " + getRating());
         return sb.toString();
     }
