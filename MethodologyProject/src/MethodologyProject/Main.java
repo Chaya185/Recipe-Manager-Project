@@ -47,7 +47,7 @@ public class Main {
 		} else if (choice == 4) {
 			rateRecipe(keyboard);
 		} else {
-			System.out.println("\nERROR! INVALID CHOICE.");
+			System.out.println("\nERROR! Invalid Choice! Choose Again");
 			menu(keyboard, fwriter);
 		}
 	}// closes menu
@@ -73,10 +73,10 @@ public class Main {
 				if (number > 0) {
 					validInput = true;
 				} else {
-					System.out.println("Error! Please enter an int for number of ingredients.");
+					System.out.println("Error! Please enter a number for amount of ingredients.");
 				}
 			} else {
-				System.out.println("Error! Please enter an int for number of ingredients.");
+				System.out.println("Error! Please enter a number for amount of ingredients.");
 				keyboard.nextLine(); // consume the invalid input
 			}
 		}
