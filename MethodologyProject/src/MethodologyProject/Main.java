@@ -16,6 +16,7 @@ public class Main {
 		String repeat;
 		do {
 			menu(keyboard, fwriter);
+			keyboard.nextLine();//consumes buffer 
 			System.out.println("Would you like to view the menu again?  ('yes/no')");
 			repeat = keyboard.nextLine();
 
@@ -35,6 +36,8 @@ public class Main {
 			System.out.println();
 			recipeNameList = addRecipeNamesToList();
 			keyboard.nextLine();
+			KeywordSearch keywordSearchObj = new KeywordSearch();
+			keywordSearchObj.body();
 
 			//findRecipes(keyboard, recipeManager);
 		} else if (choice == 2) {
@@ -111,11 +114,13 @@ public class Main {
 	}//closes submitRecipes method
 
 
-	public static void findRecipesByIngredient(Scanner keyboard) {
+	public static void findRecipesByIngredient(Scanner keyboard) throws IOException {
 		//create a recipe manager object
-		RecipeManager recipeManager = new RecipeManager();
-
-		String again;
+		//RecipeManager recipeManager = new RecipeManager();
+		recipeNameList = addRecipeNamesToList();
+		IngredientSearch ingredientSearchObj = new IngredientSearch();
+		ingredientSearchObj.body(recipeNameList);
+		/*String again;
 		String ingredient2 = "";
 		System.out.println("Enter an ingredient to find in recipes:");
 		String ingredient = keyboard.next();
@@ -133,7 +138,7 @@ public class Main {
 			//ArrayList<String> recipes = recipeManager.searchRecipesByIngredient(ingredient);
 			//System.out.println("Recipes with ingredient: " + ingredient  + String.join(",", recipes));
 			keyboard.nextLine();
-		}
+		}*/
 	}
 
 	public static void rateRecipe (Scanner keyboard) throws FileNotFoundException {
