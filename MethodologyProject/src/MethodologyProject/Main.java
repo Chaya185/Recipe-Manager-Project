@@ -1,4 +1,5 @@
 package MethodologyProject;
+		import java.time.LocalDate;
 		import java.util.ArrayList;
 		import java.util.Scanner;
 		import java.io.*;
@@ -29,7 +30,7 @@ public class Main {
 	public static void menu(Scanner keyboard, FileWriter fwriter) throws IOException {
 
 		System.out.println("Please enter your choice below: ('1' or '2' or '3' or '4') \n1. "
-				+ "find recipes \n2. submit recipes \n3. Find recipes by specific ingredient. \n4. Rate a recipe. ");
+				+ "find recipes \n2. submit recipes \n3. Find recipes by specific ingredient. \n4. Rate a recipe. \n5. View Popular Recipes. ");
 		int choice = keyboard.nextInt();
 
 		if (choice == 1) {
@@ -46,11 +47,15 @@ public class Main {
 			findRecipesByIngredient(keyboard);
 		} else if (choice == 4) {
 			rateRecipe(keyboard);
-		} else {
+		} else if (choice == 5) {
+			viewPopularRecipes(keyboard);
+		}else {
 			System.out.println("\nERROR! Invalid Choice! Choose Again");
 			menu(keyboard, fwriter);
 		}
 	}// closes menu
+
+
 
 	public static void submitRecipes(Scanner keyboard, FileWriter fwriter) throws IOException {
 		String name;
@@ -159,6 +164,64 @@ public class Main {
 		//requestedRecipe.setRating(rating);
 		keyboard.nextLine();
 	}
+
+	private static void viewPopularRecipes(Scanner keyboard) {
+		//get the current date
+		LocalDate currentDate = LocalDate.now();
+
+		//determine the season based on the current date
+		String season = getSeason(currentDate);
+		System.out.println("Current season: " + season);
+
+
+		//reads the recipe based on the season
+		String recipe = getRecipeForSeason(season);
+
+		//print the popular recipe
+		if (recipe != null) {
+			System.out.println("Popular Recipe for " + season + ": " + recipe);
+		} else {
+			System.out.println("No popular recipe available for the current season.");
+		}
+
+	}
+
+	//This method determines what season it is based off of the local date/time.
+	//depending on calendar guidelines is when the season is
+	private static String getSeason(LocalDate date) {
+		int month = date.getMonthValue();
+		int day = date.getDayOfMonth();
+
+		if ((month == 3 && day >= 20) || (month > 3 && month < 6) || (month == 6 && day < 21)) {
+			return "spring";
+		} else if ((month == 6 && day >= 21) || (month > 6 && month < 9) || (month == 9 && day < 22)) {
+			return "summer";
+		} else if ((month == 9 && day >= 22) || (month > 9 && month < 12) || (month == 12 && day < 21)) {
+			return "fall";
+		} else {
+			return "winter";
+		}
+	}
+
+	//method to print out the prespecified recipe based off of time of year
+	private static String getRecipeForSeason(String season) {
+		String recipe;
+
+		if ("fall".equalsIgnoreCase(season)) {
+			recipe = PopularRecipes.getSoupRecipe();
+		} else if ("winter".equalsIgnoreCase(season)) {
+			recipe = PopularRecipes.getHotChocolateRecipe();
+		} else if ("spring".equalsIgnoreCase(season)) {
+			recipe = PopularRecipes.getSmoothieRecipe();
+		} else if ("summer".equalsIgnoreCase(season)) {
+			recipe = PopularRecipes.getLemonadeRecipe();
+		} else {
+			return null;
+		}
+
+		return recipe;
+	}
+
 
 	//method that reads through file to add all the recipe names to a list
 	//needs to be called - everytime menu is called
