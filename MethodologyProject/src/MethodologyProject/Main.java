@@ -254,10 +254,10 @@ public class Main {
 		reader.close();
 
 		//prints
-		System.out.println("Recipe Names:");
+		/*System.out.println("Recipe Names:");
 		for (String names : recipeNamesList) {
 			System.out.println(names);
-		}
+		}*/
 		return recipeNamesList;
 	}
 }
