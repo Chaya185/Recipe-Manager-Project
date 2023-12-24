@@ -47,7 +47,7 @@ public class Main {
 
 	public static void menu(Scanner keyboard, FileWriter fwriter) throws IOException {
 
-		System.out.println("Please enter your choice below: ('1' or '2' or '3' or '4') \n1. "
+		System.out.println("Please enter your choice below: ('1' or '2' or '3' or '4' or '5') \n1. "
 				+ "find recipes \n2. submit recipes \n3. Find recipes by specific ingredient. \n4. Rate a recipe. \n5. View Popular Recipes. ");
 		int choice = keyboard.nextInt();
 
