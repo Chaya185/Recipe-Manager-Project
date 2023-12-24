@@ -16,7 +16,6 @@ public class IngredientSearch {
 		Scanner fileScanner = new Scanner(myFile);
 		searchForIngredientsInFile(myFile, recipeNameList);
 	}
-
 	public static void searchForIngredientsInFile(File myFile, ArrayList<String> recipeNameList) {
 
 		ArrayList<String> ingredientsArray = AskIngredient();
@@ -25,7 +24,6 @@ public class IngredientSearch {
 
 		FindAndPrintrecipe(myFile, ingredientsArray, breakline, shouldPrint, recipeNameList);
 	}
-
 	public static void FindAndPrintrecipe(File myFile, ArrayList<String> ingredientsArray, String breakline,
 			boolean shouldPrint, ArrayList<String> recipeNameList) {
 

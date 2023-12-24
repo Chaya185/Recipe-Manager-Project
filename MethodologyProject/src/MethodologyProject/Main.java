@@ -6,12 +6,30 @@ package MethodologyProject;
 
 public class Main {
 	public static ArrayList<String> recipeNameList;
+	static File myFile = new File("Recipes");
+
+	static KeywordSearch kws = new KeywordSearch();
+	static RecipeManager recipeManager = new RecipeManager();
+	static IngredientSearch ingredientSearchObj = new IngredientSearch();
+
 	public static void main(String[] args) throws IOException {
 		//open the recipe file that contains all the recipes and their info
 		String filename = "Recipes";
 		FileWriter fwriter = new FileWriter(filename, true);
 
 		Scanner keyboard = new Scanner(System.in);
+		//Add to recipes list from the file
+		recipeNameList = addRecipeNamesToList(false);
+		for (String recName : recipeNameList){
+			//make a Recipe object and add it to the recipe list
+			Recipe rec = new Recipe();
+			rec.setName(recName);
+			rec.setIngredients(kws.FindIngredientsForRecipe(myFile, recName));
+			rec.setInstructions(kws.FindInstructionsForRecipe(myFile, recName));
+			rec.setAllRatings(kws.FindRatingsForRecipe(myFile, recName));
+			recipeManager.addRecipe(rec);
+		}
+
 
 		//do while loop to display menu so long as user wants to repeat menu options
 		String repeat;
@@ -34,11 +52,8 @@ public class Main {
 		int choice = keyboard.nextInt();
 
 		if (choice == 1) {
-			System.out.println();
-			recipeNameList = addRecipeNamesToList();
-			keyboard.nextLine();
-			KeywordSearch keywordSearchObj = new KeywordSearch();
-			keywordSearchObj.body();
+			printAllRecipes();
+			FindRecipe(keyboard);
 
 			//findRecipes(keyboard, recipeManager);
 		} else if (choice == 2) {
@@ -55,6 +70,20 @@ public class Main {
 		}
 	}// closes menu
 
+	private static void FindRecipe(Scanner keyboard) throws FileNotFoundException {
+		System.out.println("Which recipe would you like to look for?");
+		keyboard.nextLine();
+		String recName = keyboard.nextLine();
+		Recipe recipe = recipeManager.getRecipeByName(recName);
+		System.out.println(recipe);
+		System.out.println("press enter to continue...");
+	}
+
+	private static void printAllRecipes() {
+		for(Recipe recipe : recipeManager.getAllRecipes()){
+			System.out.println(recipe.getName());
+		}
+	}
 
 
 	public static void submitRecipes(Scanner keyboard, FileWriter fwriter) throws IOException {
@@ -109,8 +138,7 @@ public class Main {
 		outputFile.println(recipe);
 
 		//add the recipe to list of recipes using recipeManager
-		RecipeManager addRecipeObj = new RecipeManager();
-		addRecipeObj.addRecipe(recipe);
+		recipeManager.addRecipe(recipe);
 
 		System.out.println("Recipe is getting submitted!");
 
@@ -120,11 +148,17 @@ public class Main {
 
 
 	public static void findRecipesByIngredient(Scanner keyboard) throws IOException {
+		System.out.println("Enter ingredient to find recipes");
+		String ingredient = keyboard.next();
+		ArrayList<String> matchingRecipes = recipeManager.searchRecipesByIngredient(ingredient);
+		for(String recipe : matchingRecipes){
+			System.out.print(recipe + " | ");
+		}
+		System.out.println();
 		//create a recipe manager object
 		//RecipeManager recipeManager = new RecipeManager();
-		recipeNameList = addRecipeNamesToList();
-		IngredientSearch ingredientSearchObj = new IngredientSearch();
-		ingredientSearchObj.body(recipeNameList);
+		/*recipeNameList = addRecipeNamesToList(true);
+		ingredientSearchObj.body(recipeNameList);*/
 		/*String again;
 		String ingredient2 = "";
 		System.out.println("Enter an ingredient to find in recipes:");
@@ -146,13 +180,13 @@ public class Main {
 		}*/
 	}
 
-	public static void rateRecipe (Scanner keyboard) throws FileNotFoundException {
+	public static void rateRecipe (Scanner keyboard) throws IOException {
 		//create a recipe manager object
-		RecipeManager recipeManager = new RecipeManager();
-
-//USE THE SAME ALGORITHM THAT DISPLAYS THE LIST OF RECIPES FROM THE RECIPE FILE TO DISPLAY THE OPTIONS
-		System.out.println("Which recipe would you like to rate? ");
+		printAllRecipes();
+		System.out.println("Which recipe below would you like to rate? ");
+		keyboard.nextLine();
 		String recipeGettingRated = keyboard.nextLine();
+
 		System.out.println("Rate the recipe from 1-10 ");
 		int rating = keyboard.nextInt();
 		while (rating < 1 || rating > 10) {
@@ -160,9 +194,12 @@ public class Main {
 			System.out.println("Rate the recipe from 1-10 ");
 			rating = keyboard.nextInt();
 		}
-		//commented out becuase it's an error
-		//requestedRecipe.setRating(rating);
-		keyboard.nextLine();
+		Recipe recipeToSetRating = recipeManager.getRecipeByName(recipeGettingRated);
+		if (recipeToSetRating == null) {
+			System.out.println("Sorry, you entered an invalid name for recipe. Try again. ");
+			recipeToSetRating = recipeManager.getRecipeByName(recipeGettingRated);
+		}
+		recipeToSetRating.setRating(rating);
 	}
 
 	private static void viewPopularRecipes(Scanner keyboard) {
@@ -225,7 +262,7 @@ public class Main {
 
 	//method that reads through file to add all the recipe names to a list
 	//needs to be called - everytime menu is called
-	public static ArrayList<String> addRecipeNamesToList () throws IOException {
+	public static ArrayList<String> addRecipeNamesToList (boolean printRecipe) throws IOException {
 		String filePath = "Recipes";
 
 		//initialize ArrayList
@@ -244,7 +281,8 @@ public class Main {
 			if (separator.contains("-----")) {
 				// Found the separator, read and print the next line which is a recipe name
 				separator = reader.readLine();
-				System.out.println(separator);
+				if (printRecipe)
+					System.out.println(separator);
 				//add the recipe name to the arrayList
 				recipeNamesList.add(separator);
 			}

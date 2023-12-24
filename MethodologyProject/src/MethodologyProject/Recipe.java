@@ -8,7 +8,7 @@ public class Recipe {
     private String name;
     private ArrayList<String> ingredients;
     private String instructions;
-    private  int rating;
+    private  ArrayList<Integer> rating = new ArrayList<Integer>();
     //private recipeObject recipe;
 
     //constructor
@@ -16,6 +16,7 @@ public class Recipe {
         this.name = name;
         this.ingredients = ingredients;
         this.instructions = instructions;
+        rating.add(0);
     }
     //empty constructor
     public Recipe() {
@@ -35,10 +36,18 @@ public class Recipe {
     }
 
     public void setRating(int rating){
-        this.rating = rating;
+        this.rating.add(rating);
     }
-
-    public  int getRating() {return rating; }
+    public void setAllRatings(ArrayList<Integer> ratings){
+            this.rating = ratings;
+    }
+    public double getRating() {
+        double sum = 0.0;
+        for(int i : rating){
+            sum += i;
+        }
+        return sum/rating.size();
+    }
     //getters
     public String getName(){
         return name;
