@@ -77,9 +77,9 @@ public class PopularRecipes {
                 "½ cup bittersweet or semisweet chocolate chips or chopped chocolate bar\n" +
                 "¼ teaspoon pure vanilla extract"};
 
-        String hotChocolateInstructions = "Place milk, cocoa powder and sugar in a small saucepan. Heat over medium/medium-low heat, " +
-                "whisking frequently, until warm (but not boiling). Add chocolate chips and whisk constantly until the chocolate chips " +
-                "melt and distribute evenly into the milk. Whisk in vanilla extract, serve immediately.";
+        String hotChocolateInstructions = "1. Place milk, cocoa powder and sugar in a small saucepan. \n2. Heat over medium/medium-low heat, " +
+                "whisking frequently, until warm (but not boiling). \n3. Add chocolate chips and whisk constantly until the chocolate chips " +
+                "melt and distribute evenly into the milk. \n4. Whisk in vanilla extract, serve immediately.";
 
         //combines it together
         hotChocolateRecipe = recipeName + "\n\nIngredients:\n" + String.join("\n", recipeIngredients) + "\n\nInstructions:\n" + hotChocolateInstructions;
@@ -93,10 +93,10 @@ public class PopularRecipes {
                 "1 cup granulated sugar\n" +
                 "1 cup fresh-squeezed lemon juice\n"};
 
-        String lemonadeInstructions = "Combine 1 cup water and 1 cup sugar in a small saucepan. Place over medium-low heat and stir until " +
-                "sugar is dissolved. Remove from heat and set aside, allow to cool for 10 minutes.\n" +
-                "Pour 1 cup fresh-squeezed lemon juice into a pitcher. Add sugar/water mixture (simple syrup).\n" +
-                "Add remaining 5 cups water and stir well. Pour over ice and serve, or transfer to refrigerator and allow to chill " +
+        String lemonadeInstructions = "1. Combine 1 cup water and 1 cup sugar in a small saucepan. \n2. Place over medium-low heat and stir until " +
+                "sugar is dissolved. \n3. Remove from heat and set aside, allow to cool for 10 minutes.\n" +
+                "\n4. Pour 1 cup fresh-squeezed lemon juice into a pitcher. Add sugar/water mixture (simple syrup).\n" +
+                "\n5. Add remaining 5 cups water and stir well. \n6. Pour over ice and serve, or transfer to refrigerator and allow to chill " +
                 "several hours before serving.";
 
         //combines it together
