@@ -13,7 +13,7 @@ package MethodologyProject;
 //testing
 //this class deals with the list of all recipes, including adding and removing recipes
 public class RecipeManager {
-    private ArrayList<MethodologyProject.Recipe> recipes = new ArrayList<>();
+    private ArrayList<MethodologyProject.Recipe> recipes;
 
     //constructor
     public RecipeManager(){

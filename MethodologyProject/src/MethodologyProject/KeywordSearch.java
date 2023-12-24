@@ -62,9 +62,9 @@ public class KeywordSearch {
 					foundRecipe = true;
 				}
 				if (foundRecipe && line.equalsIgnoreCase("Instructions:")){
-					while(line != null && !line.contains("")){
+					while(line != null /*&& !line.contains("")*/){
 						line = br.readLine();
-						if (line != null && !line.contains(""))
+						if (line != null /*&& !line.contains("")*/)
 							instructions += line + "\n";
 					}
 					break;
