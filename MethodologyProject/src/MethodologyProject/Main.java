@@ -53,7 +53,7 @@ public class Main {
 
 		if (choice == 1) {
 			printAllRecipes();
-			FindRecipe(keyboard);
+			FindRecipe(keyboard, fwriter);
 
 			//findRecipes(keyboard, recipeManager);
 		} else if (choice == 2) {
@@ -70,11 +70,22 @@ public class Main {
 		}
 	}// closes menu
 
-	private static void FindRecipe(Scanner keyboard) throws FileNotFoundException {
+	private static void FindRecipe(Scanner keyboard, FileWriter fwriter) throws IOException {
 		System.out.println("Which recipe would you like to look for?");
 		keyboard.nextLine();
-		String recName = keyboard.nextLine();
-		Recipe recipe = recipeManager.getRecipeByName(recName);
+		String recipeName = keyboard.nextLine();
+		Recipe recipe = recipeManager.getRecipeByName(recipeName);
+		if (recipe == null){
+			System.out.println("Recipe not found. Would you like to submit this recipe instead? (yes/no)");
+			String submitRecipe = keyboard.nextLine();
+			if (submitRecipe.equalsIgnoreCase("yes")){
+				submitRecipes(keyboard, fwriter);
+			}
+		}
+		else {
+			System.out.println(recipe);
+			System.out.println("Press enter to continue...");
+		}
 		System.out.println(recipe);
 		System.out.println("press enter to continue...");
 	}
