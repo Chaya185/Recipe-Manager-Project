@@ -1,21 +1,12 @@
 
 package MethodologyProject;
-
-        import MethodologyProject.KeywordSearch;
-        import MethodologyProject.Recipe;
-
-        import java.io.File;
         import java.io.FileNotFoundException;
         import java.util.ArrayList;
-        import java.util.List;
-        import java.util.Scanner;
 
-//testing
 //this class deals with the list of all recipes, including adding and removing recipes
 public class RecipeManager {
     private ArrayList<MethodologyProject.Recipe> recipes;
 
-    //constructor
     public RecipeManager(){
         recipes = new ArrayList<>();
     }
@@ -56,5 +47,4 @@ public class RecipeManager {
         }
         return recipesWithIngredients;
     }
-
 }

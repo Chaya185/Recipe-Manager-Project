@@ -91,9 +91,7 @@ public class IngredientSearch {
 			System.out.println("Enter a second ingredient to find in recipes:");
 			ingredient2 = keyboard.nextLine();
 			ingredientsArray.add(ingredient2);
-
 		}
 		return ingredientsArray;
 	}
-
 }

@@ -141,6 +141,4 @@ public class KeywordSearch {
 		String[] keywords = {recipeRequest};
 		return keywords;
 	}
-
-
 }

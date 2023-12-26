@@ -30,7 +30,6 @@ public class Main {
 			recipeManager.addRecipe(rec);
 		}
 
-
 		//do while loop to display menu so long as user wants to repeat menu options
 		String repeat;
 		do {
@@ -41,9 +40,8 @@ public class Main {
 
 		} while (repeat.equalsIgnoreCase("yes"));
 
-		//close the recipe text file
 		fwriter.close();
-	}//closes main method
+	}
 
 	public static void menu(Scanner keyboard, FileWriter fwriter) throws IOException {
 
@@ -68,7 +66,7 @@ public class Main {
 			System.out.println("\nERROR! Invalid Choice! Choose Again");
 			menu(keyboard, fwriter);
 		}
-	}// closes menu
+	}
 
 	private static void FindRecipe(Scanner keyboard, FileWriter fwriter) throws IOException {
 		System.out.println("Which recipe would you like to look for?");
@@ -107,8 +105,6 @@ public class Main {
 		keyboard.nextLine();
 		System.out.println("Please enter the name of the recipe: ");
 		name = keyboard.nextLine();
-//maybe we can add the recipe name to Rina's arrayList created in her new method?
-		//listRecipes.add(name);
 
 		//input validation, only an int is entered
 		while (!validInput) {
@@ -153,10 +149,7 @@ public class Main {
 
 		System.out.println("Recipe is getting submitted!");
 
-//need code here that will access a recipe method that adds this newly created recipe to the recipe array list
-
-	}//closes submitRecipes method
-
+	}
 
 	public static void findRecipesByIngredient(Scanner keyboard) throws IOException {
 		System.out.println("Enter ingredient to find recipes");
@@ -166,29 +159,6 @@ public class Main {
 			System.out.print(recipe + " | ");
 		}
 		System.out.println();
-		//create a recipe manager object
-		//RecipeManager recipeManager = new RecipeManager();
-		/*recipeNameList = addRecipeNamesToList(true);
-		ingredientSearchObj.body(recipeNameList);*/
-		/*String again;
-		String ingredient2 = "";
-		System.out.println("Enter an ingredient to find in recipes:");
-		String ingredient = keyboard.next();
-		keyboard.nextLine();
-		System.out.println("Would you like to find another ingredient? ('yes'/'no')");
-		again = keyboard.nextLine();
-		if (again.equalsIgnoreCase("yes")) {
-			System.out.println("Enter a second ingredient to find in recipes:");
-			ingredient2 = keyboard.nextLine();
-			ArrayList<String> recipes = recipeManager.searchRecipesByIngredient(ingredient, ingredient2);
-			System.out.println("Recipes with " + ingredient + " and " + ingredient2 + " ingredient: " + String.join(",", recipes));
-			keyboard.nextLine();
-		} else {
-//ENABLE SEARCH FOR 1 RECIPE
-			//ArrayList<String> recipes = recipeManager.searchRecipesByIngredient(ingredient);
-			//System.out.println("Recipes with ingredient: " + ingredient  + String.join(",", recipes));
-			keyboard.nextLine();
-		}*/
 	}
 
 	public static void rateRecipe (Scanner keyboard) throws IOException {
@@ -221,7 +191,6 @@ public class Main {
 		String season = getSeason(currentDate);
 		System.out.println("Current season: " + season);
 
-
 		//reads the recipe based on the season
 		String recipe = getRecipeForSeason(season);
 
@@ -231,7 +200,6 @@ public class Main {
 		} else {
 			System.out.println("No popular recipe available for the current season.");
 		}
-
 	}
 
 	//This method determines what season it is based off of the local date/time.
@@ -298,15 +266,8 @@ public class Main {
 				recipeNamesList.add(separator);
 			}
 		}
-
 		//close the reader
 		reader.close();
-
-		//prints
-		/*System.out.println("Recipe Names:");
-		for (String names : recipeNamesList) {
-			System.out.println(names);
-		}*/
 		return recipeNamesList;
 	}
 }

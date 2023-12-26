@@ -103,7 +103,4 @@ public class PopularRecipes {
         lemonadeRecipe = recipeName + "\n\nIngredients:\n" + String.join("\n", lemonadeIngredients) + "\n\nInstructions:\n" + lemonadeInstructions;
         return lemonadeRecipe;
     }
-
-
-
-} //closes class
+}
