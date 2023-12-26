@@ -200,7 +200,7 @@ public class Main {
 
 		System.out.println("Rate the recipe from 1-5 ");
 		int rating = keyboard.nextInt();
-		while (rating < 1 || rating > 10) {
+		while (rating < 1 || rating > 5) {
 			System.out.println("Error! invalid rating number");
 			System.out.println("Rate the recipe from 1-5 ");
 			rating = keyboard.nextInt();
