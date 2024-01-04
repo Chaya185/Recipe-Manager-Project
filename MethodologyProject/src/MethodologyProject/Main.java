@@ -84,8 +84,6 @@ public class Main {
 			System.out.println(recipe);
 			System.out.println("Press enter to continue...");
 		}
-		System.out.println(recipe);
-		System.out.println("press enter to continue...");
 	}
 
 	private static void printAllRecipes() {
